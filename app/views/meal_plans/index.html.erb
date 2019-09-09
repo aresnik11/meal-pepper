@@ -1,0 +1,15 @@
+<h1>Meal Plans</h1>
+
+<!-- 
+<%= form_tag recipes_path, method: :get do %>
+    <%= label_tag "Search for recipe:" %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag :submit, name: nil %>
+<% end %>
+-->
+
+<ol>
+    <% @meal_plans.each do |meal_plan| %>
+        <li><%= link_to meal_plan.name, meal_plan_path(meal_plan) %></li>
+    <% end %>
+</ol>

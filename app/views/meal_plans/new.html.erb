@@ -1,0 +1,13 @@
+<h1>Create a New Meal Plan</h1>
+
+<% if flash[:messages] %>
+    <h3><%= flash[:messages] %></h3>
+<% end %>
+
+<%= form_for @meal_plan do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :user_id %>
+    <%= f.number_field :user_id %>
+    <%= f.submit :submit %>
+<% end %>

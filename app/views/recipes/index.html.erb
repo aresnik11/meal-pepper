@@ -1,0 +1,23 @@
+<h1><%= @dish_type %> Recipes</h1>
+
+<%= form_tag recipes_path, method: :get do %>
+    <%= label_tag "Filter by meal type:" %>
+    <%= collection_select :recipe, :dish_type, @dish_types, :to_s, :to_s, prompt: true %>
+    <%= submit_tag :submit, name: :filter %>
+<% end %>
+
+<br>
+
+<%= form_tag recipes_path, method: :get do %>
+    <%= label_tag "Search for recipe:" %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag :submit, name: nil %>
+<% end %>
+
+<p>Number of recipes: <%= @count %></p>
+
+<ol>
+    <% @recipes.each do |recipe| %>
+        <li><%= link_to recipe.title, recipe_path(recipe) %></li>
+    <% end %>
+</ol>

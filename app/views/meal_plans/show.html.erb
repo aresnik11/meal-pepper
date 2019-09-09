@@ -1,0 +1,12 @@
+<h1><%= @meal_plan.name %></h1>
+
+<ul>
+    <li><b>User:</b> <%= @meal_plan.user_id %></li>
+    <li><b>Recipes:</b>
+        <ul>
+        <% @meal_plan.recipes.each do |recipe| %>
+            <li><%= link_to recipe.title, recipe_path(recipe) %></li>
+        <% end %>
+        </ul>
+    </li>
+</ul>
