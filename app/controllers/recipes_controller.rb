@@ -18,5 +18,8 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @meal_plan_recipe = MealPlanRecipe.new
+    @meal_plans = current_user.meal_plans
+    @meal_plan = MealPlan.new
   end
 end

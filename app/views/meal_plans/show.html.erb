@@ -1,12 +1,27 @@
 <h1><%= @meal_plan.name %></h1>
 
 <ul>
-    <li><b>User:</b> <%= @meal_plan.user.full_name %></li>
+    <li><b>User:</b> <%= link_to @meal_plan.user.full_name, user_path(@meal_plan.user) %></li>
     <li><b>Recipes:</b>
         <ul>
         <% @meal_plan.recipes.each do |recipe| %>
-            <li><%= link_to recipe.title, recipe_path(recipe) %></li>
+            <li><%= link_to recipe.title, recipe_path(recipe) %>
+                <% meal_plan_recipe = MealPlanRecipe.find_by(recipe_id: recipe.id, meal_plan_id: @meal_plan.id) %>
+                <%= button_to "Remove recipe", meal_plan_recipe_path(meal_plan_recipe), method: :delete, data: {confirm: "Are you sure?"} %>
+            </li>
         <% end %>
         </ul>
     </li>
 </ul>
+
+<br>
+
+<%= button_to "Find a recipe to add to add to this meal plan", recipes_path, method: :get %>
+
+<br>
+
+<%= button_to "Edit this meal plan", edit_user_meal_plan_path(current_user), method: :get %>
+
+<br>
+
+<%= button_to "Delete Meal Plan", user_meal_plan_path(current_user, @meal_plan), method: :delete, data: {confirm: "Are you sure you want to delete this meal plan?"} %>

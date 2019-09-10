@@ -5,10 +5,15 @@
 <h4>Your Meal Plans:</h4>
 <ul>
     <% @meal_plans.each do |meal| %>
-        <li><%= link_to meal.name, meal_plan_path(meal) %></li>
+        <li><%= link_to meal.name, user_meal_plan_path(@user, meal) %></li>
     <% end %>
 </ul>
 
+<br>
+<%= button_to 'Add Meal Plan', new_user_meal_plan_path(@user), method: :get %>
+<br>
+<%= button_to 'Edit User Info', edit_user_path(@user), method: :get %>
+<br>
 <%= button_to 'Log Out', logout_path, method: :delete %>
 <br>
 <%= button_to 'Delete Account', user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete your account?"} %>

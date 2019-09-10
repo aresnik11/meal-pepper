@@ -1,0 +1,8 @@
+<h1>Edit Meal Plan</h1>
+
+<%= form_for [current_user, @meal_plan] do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit :submit %>
+<% end %>
