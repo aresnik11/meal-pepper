@@ -10,6 +10,9 @@
   </head>
 
   <body>
+    <% if flash[:messages] %>
+      <h3><%= flash[:messages] %></h3>
+    <% end %>
     <%= yield %>
   </body>
 </html>

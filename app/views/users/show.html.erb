@@ -1,0 +1,14 @@
+<h1>My Dashboard</h1>
+
+<h3>Hello, <%= @user.full_name %></h3>
+
+<h4>Your Meal Plans:</h4>
+<ul>
+    <% @meal_plans.each do |meal| %>
+        <li><%= link_to meal.name, meal_plan_path(meal) %></li>
+    <% end %>
+</ul>
+
+<%= button_to 'Log Out', logout_path, method: :delete %>
+<br>
+<%= button_to 'Delete Account', user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete your account?"} %>

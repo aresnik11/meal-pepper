@@ -1,0 +1,19 @@
+<h1>Sign Up</h1>
+
+<%= form_for @user do |f| %>
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name, autofocus: true %><br><br>
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %><br><br>
+    <%= f.label :username %><br>
+    <%= f.text_field :username %><br><br>
+    <%= f.label :email_address %><br>
+    <%= f.email_field :email_address %><br><br>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %><br><br>
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %><br><br>
+    <%= f.label :vegetarian %><br>
+    <%= f.check_box :vegetarian %><br><br>
+    <%= f.submit 'Sign Up' %>
+<% end %>
