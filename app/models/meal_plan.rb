@@ -2,6 +2,8 @@ class MealPlan < ApplicationRecord
   belongs_to :user
   has_many :meal_plan_recipes
   has_many :recipes, through: :meal_plan_recipes
+  has_many :meal_plan_wines
+  has_many :wines, through: :meal_plan_wines
 
   validates :name, presence: true
   validate :meal_plan_names_for_user
@@ -9,6 +11,12 @@ class MealPlan < ApplicationRecord
   def delete_recipes
     self.meal_plan_recipes.each do |meal_recipe|
       meal_recipe.delete
+    end
+  end
+
+  def delete_wines
+    self.meal_plan_wines.each do |meal_wine|
+      meal_wine.delete
     end
   end
 

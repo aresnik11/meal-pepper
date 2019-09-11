@@ -1,0 +1,2 @@
+module MealPlanWineHelper
+end

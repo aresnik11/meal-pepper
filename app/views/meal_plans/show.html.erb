@@ -11,12 +11,28 @@
             </li>
         <% end %>
         </ul>
+        <br>
+
+        <li><b>Wines:</b>
+        <ul>
+        <% @meal_plan.wines.each do |wine| %>
+            <li><%= link_to wine.title, wine_path(wine) %>
+                <% meal_plan_wine = MealPlanWine.find_by(wine_id: wine.id, meal_plan_id: @meal_plan.id) %>
+                <%= button_to "Remove wine", meal_plan_wine_path(meal_plan_wine), method: :delete, data: {confirm: "Are you sure?"} %>
+            </li>
+        <% end %>
+        </ul>
+
     </li>
 </ul>
 
 <br>
 
 <%= button_to "Find a recipe to add to add to this meal plan", recipes_path, method: :get %>
+
+<br>
+
+<%= button_to "Find a wine to add to add to this meal plan", wines_path, method: :get %>
 
 <br>
 

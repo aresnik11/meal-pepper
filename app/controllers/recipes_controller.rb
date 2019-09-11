@@ -5,9 +5,7 @@ class RecipesController < ApplicationController
       @dish_type = params[:recipe][:dish_type]
     elsif params[:search]
       wanted_ings = Ingredient.search_ingreds(params[:search])
-      @recipes = Recipe.all.select do |recipe|
-        recipe.has_any_of_these_ingreds?(wanted_ings) || recipe.found_in_title?(params[:search])
-      end
+      @recipes = Recipe.by_search(params[:search], wanted_ings)
     else
       @recipes = Recipe.all
       @dish_type = "All"

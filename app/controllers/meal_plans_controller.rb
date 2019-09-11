@@ -11,7 +11,6 @@ class MealPlansController < ApplicationController
 
   def new
     @meal_plan = MealPlan.new
-    @user = current_user
   end
 
   def create
@@ -20,6 +19,8 @@ class MealPlansController < ApplicationController
     if @meal_plan.valid?
       if params[:meal_plan][:recipe_id]
         MealPlanRecipe.create(recipe_id: params[:meal_plan][:recipe_id], meal_plan_id: @meal_plan.id)
+      elsif params[:meal_plan][:wine_id]
+        MealPlanWine.create(wine_id: params[:meal_plan][:wine_id], meal_plan_id: @meal_plan.id)
       end
       redirect_to user_meal_plan_path(current_user, @meal_plan)
     else
@@ -42,6 +43,7 @@ class MealPlansController < ApplicationController
 
   def destroy
     @meal_plan.delete_recipes
+    @meal_plan.delete_wines
     @meal_plan.delete
     redirect_to user_path(current_user)
   end

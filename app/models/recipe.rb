@@ -37,4 +37,10 @@ class Recipe < ApplicationRecord
         end
     end
 
+    def self.by_search(search, wanted_ings)
+        Recipe.all.select do |recipe|
+            recipe.has_any_of_these_ingreds?(wanted_ings) || recipe.found_in_title?(search)
+        end
+    end
+
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_06_184916) do
+ActiveRecord::Schema.define(version: 2019_09_10_214652) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 2019_09_06_184916) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["meal_plan_id"], name: "index_meal_plan_recipes_on_meal_plan_id"
     t.index ["recipe_id"], name: "index_meal_plan_recipes_on_recipe_id"
+  end
+
+  create_table "meal_plan_wines", force: :cascade do |t|
+    t.integer "meal_plan_id", null: false
+    t.integer "wine_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["meal_plan_id"], name: "index_meal_plan_wines_on_meal_plan_id"
+    t.index ["wine_id"], name: "index_meal_plan_wines_on_wine_id"
   end
 
   create_table "meal_plans", force: :cascade do |t|
@@ -70,8 +79,21 @@ ActiveRecord::Schema.define(version: 2019_09_06_184916) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "wines", force: :cascade do |t|
+    t.string "title"
+    t.float "rating"
+    t.string "description"
+    t.string "image_url"
+    t.string "price"
+    t.string "varietal"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "meal_plan_recipes", "meal_plans"
   add_foreign_key "meal_plan_recipes", "recipes"
+  add_foreign_key "meal_plan_wines", "meal_plans"
+  add_foreign_key "meal_plan_wines", "wines"
   add_foreign_key "meal_plans", "users"
   add_foreign_key "recipe_ingredients", "ingredients"
   add_foreign_key "recipe_ingredients", "recipes"

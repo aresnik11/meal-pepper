@@ -1,19 +1,14 @@
 Rails.application.routes.draw do
   resources :recipes, only: [:index, :show]
-  resources :meal_plan_recipes
-  
+  resources :meal_plan_recipes, only: [:create, :destroy]
+  resources :wines, only: [:index, :show]
+  resources :meal_plan_wines, only: [:create, :destroy]
   resources :users, except: [:new] do 
     resources :meal_plans
   end
   
-
   #user routes
   get '/signup', to: 'users#new', as: 'signup'
-  # post '/users', to: 'users#create'
-  # get '/users/:id', to: 'users#show', as: 'user'
-  # get '/users/:id/edit', to: 'users#edit', as: 'edit_user'
-  # patch '/users/:id', to: 'users#update'
-  # delete '/users/:id', to: 'users#destroy'
 
   #session routes
   get '/login', to: 'sessions#new', as: 'login'

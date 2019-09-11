@@ -20,7 +20,7 @@
 </ul>
 
 <br>
-Add this recipe to a meal plan
+<h4>Add this recipe to an existing meal plan:</h4>
 <%= form_for @meal_plan_recipe do |f| %>
     <%= f.collection_select :meal_plan_id, @meal_plans, :id, :name, prompt: "Select a meal plan to add to" %>
     <%= f.hidden_field :recipe_id, value: @recipe.id %>
@@ -29,7 +29,7 @@ Add this recipe to a meal plan
 
 <br>
 
-Create a new plan and add this
+<h4>Create a new plan and add this recipe to it:</h4>
 <%= form_for [current_user, @meal_plan] do |f| %>
     <%= f.label 'Meal Plan Name' %>
     <%= f.text_field :name %>
