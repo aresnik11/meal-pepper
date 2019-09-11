@@ -1,23 +1,69 @@
-<h1><%= @dish_type %> Recipes</h1>
+<div class="all-recipes">
+    <div class="header">one day I will be a header</div>
+    <div class="container">
+        <div class="index-sidebar">
+            <h1><%= @dish_type %> Recipes</h1>
 
-<%= form_tag recipes_path, method: :get do %>
-    <%= label_tag "Filter by meal type:" %>
-    <%= collection_select :recipe, :dish_type, @dish_types, :to_s, :to_s, prompt: true %>
-    <%= submit_tag :submit, name: :filter %>
-<% end %>
+            <%= form_tag recipes_path, method: :get do %>
+                <%= label_tag "Filter by meal type:" %>
+                <%= collection_select :recipe, :dish_type, @dish_types, :to_s, :to_s, prompt: true %>
+                <%= submit_tag :submit, name: :filter %>
+            <% end %>
 
-<br>
+            <br>
 
-<%= form_tag recipes_path, method: :get do %>
-    <%= label_tag "Search for recipe:" %>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag :submit, name: nil %>
-<% end %>
+            <%= form_tag recipes_path, method: :get do %>
+                <%= label_tag "Search for recipe:" %>
+                <%= text_field_tag :search, params[:search] %>
+                <%= submit_tag :submit, name: nil %>
+            <% end %>
 
-<p>Number of recipes: <%= @count %></p>
+            <p>Number of recipes: <%= @count %></p>
+        </div> <!-- closing index-sidebar -->
 
-<ol>
-    <% @recipes.each do |recipe| %>
-        <li><%= link_to recipe.title, recipe_path(recipe) %></li>
-    <% end %>
-</ol>
+        <div class="index-all-items">
+                <% @recipes.each do |recipe| %>
+                    <div class="recipe-card">
+                        <aside>
+                            <%= image_tag recipe.image_url %>
+                        </aside>
+                        <article>
+                            <h2><%= link_to recipe.title, recipe_path(recipe) %></h2>
+                            <h3><%= recipe.dish_type %></h3>
+                            <ul>
+                                <li><span class="icon icon-users"></span><span><%= recipe.servings %></span></li>
+                                <li><span class="icon icon-clock"></span><span><%= recipe.time %></span></li>
+                            </ul>
+                        </article>
+                    </div> <!-- closing recipe-card -->
+                <% end %>
+        </div> <!-- closing index-all-items -->
+    </div> <!-- closing container -->
+</div> <!-- closing all-recipes -->
+
+<%# 
+<div class="recipe-card">
+
+	<aside>
+
+		<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/203277/oatmeal.jpg" alt="Chai Oatmeal" />
+
+		<a href="#" class="button"><span class="icon icon-play"></span></a>
+
+	</aside>
+
+	<article>
+
+		<h2>Chai Oatmeal</h2>
+		<h3>Breakfast</h3>
+
+		<ul>
+			<li><span class="icon icon-users"></span><span>1</span></li>
+			<li><span class="icon icon-clock"></span><span>15 min</span></li>
+			<li><span class="icon icon-level"></span><span>Beginner level</span></li>
+			<li><span class="icon icon-calories"></span><span>248</span></li>
+		</ul>
+
+	</article>
+
+</div> %>

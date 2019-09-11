@@ -1,3 +1,185 @@
 // Place all the styles related to the Recipes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.all-recipes {
+}
+
+.header {
+    padding: 25px;
+    background-color: white;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.index-sidebar {
+    // border-style: solid;
+    // border-width: 2px;
+    // border-color: orange;
+    // background-color: white;
+}
+
+.index-all-items {
+    // margin-top: 4%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 10px;
+}
+
+
+// https://codepen.io/klesht/pen/pjjegK
+// @import "bourbon";
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	background-image: linear-gradient(-45deg, #19d3d1 5%, #57abf2);
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1rem;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	vertical-align: bottom;
+}
+
+.recipe-card {
+	background: #fff;
+	margin: 4em auto;
+	width: 90%;
+	max-width: 496px;
+	border-radius: 5px;
+
+	aside {
+		position: relative;
+
+		img {
+			border-radius: 5px 5px;
+		}
+
+		.button {
+			background: #57abf2;
+			display: inline-block;
+			position: absolute;
+			top: 80%;
+			right: 3%;
+			width: em(65);
+			height: em(65);
+			border-radius: em(65);
+			line-height: em(65);
+			text-align: center;
+
+			.icon {
+				vertical-align: middle;
+			}
+		}
+	}
+
+	article {
+		padding: 1.25em 1.5em;
+
+		ul {
+			list-style: none;
+			margin: 0.5em 0 0;
+			padding: 0;
+			li {
+				display: inline-block;
+				margin-left: 1em;
+				line-height: 1em;
+				&:first-child {
+					margin-left: 0;
+				}
+
+				.icon {
+				    vertical-align: bottom;
+				}
+
+				span:nth-of-type(2) {
+					margin-left: 0.5em;
+					font-size: 0.8em;
+					font-weight: 300;
+					vertical-align: middle;
+					color: #838689;
+				}
+			}
+		}
+
+		h2, h3 {
+			margin: 0;
+			font-weight: 300;
+		}
+
+		h2 {
+			font-size: em(28);
+			color: #222222;
+		}
+
+		h3 {
+			font-size: em(15);
+			color: #838689;
+		}
+
+		p {
+			margin: 1.25em 0;
+			font-size: em(13);
+			font-weight: 400;
+			color: #222222;
+
+			span {
+				font-weight: 700;
+				color: #000000;
+			}
+		}
+
+		.ingredients {
+			margin: 2em 0 0.5em;
+		}
+	}
+
+	.icon {
+	    display: inline;
+	    display: inline-block;
+	    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/203277/recipe-card-icons.svg);
+	    background-repeat: no-repeat;
+	}
+
+	.icon-calories,.icon-calories\:regular {
+	    background-position: 0 0;
+	    width: 16px;
+	    height: 19px;
+	}
+
+	.icon-clock,.icon-clock\:regular {
+	    background-position: 0 -19px;
+	    width: 20px;
+	    height: 20px;
+	}
+
+	.icon-level,.icon-level\:regular {
+	    background-position: 0 -39px;
+	    width: 16px;
+	    height: 19px;
+	}
+
+	.icon-play,.icon-play\:regular {
+	    background-position: 0 -58px;
+	    width: 21px;
+	    height: 26px;
+	}
+
+	.icon-users,.icon-users\:regular {
+	    background-position: 0 -84px;
+	    width: 18px;
+	    height: 18px;
+	}
+}

@@ -1,39 +1,47 @@
-<h1><%= link_to @recipe.title, @recipe.url, target: "_blank" %></h1>
+<div>
+    <div class="header">one day I will be a header</div>
+    <div class="container">
+        <div class="index-sidebar">
+            <h4>Add this recipe to an existing meal plan:</h4>
+            <%= form_for @meal_plan_recipe do |f| %>
+            <%= f.collection_select :meal_plan_id, @meal_plans, :id, :name, prompt: "Select a meal plan to add to" %>
+            <%= f.hidden_field :recipe_id, value: @recipe.id %>
+            <%= f.submit :submit %>
+            <% end %>
 
-<%= link_to (image_tag @recipe.image_url), @recipe.url, target: "_blank"  %>
+            <br>
 
-<ul>
-    <li><b>Dish Type:</b> <%= @recipe.dish_type %></li>
-    <li><b>Vegetarian:</b> <%= @recipe.vegetarian %></li>
-    <li><b>Cuisine:</b> <%= @recipe.cuisine %></li>
-    <li><b>Time:</b> <%= @recipe.time %></li>
-    <li><b>Servings:</b> <%= @recipe.servings %></li>
-    <li><b>Cheap:</b> <%= @recipe.cheap %></li>
-    <li><b>Popular:</b> <%= @recipe.popular %></li>
-    <li><b>Ingredients:</b>
-        <ul>
-        <% @recipe.ingredients.each do |ing| %>
-            <li><%= ing.name %></li>
-        <% end %>
-        </ul>
-    </li>
-</ul>
+            <h4>Create a new plan and add this recipe to it:</h4>
+            <%= form_for [current_user, @meal_plan] do |f| %>
+                <%= f.label 'Meal Plan Name' %>
+                <%= f.text_field :name %>
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%= f.hidden_field :recipe_id, value: @recipe.id %>
+                <%= f.submit :submit %>
+            <% end %>
+        </div>
 
-<br>
-<h4>Add this recipe to an existing meal plan:</h4>
-<%= form_for @meal_plan_recipe do |f| %>
-    <%= f.collection_select :meal_plan_id, @meal_plans, :id, :name, prompt: "Select a meal plan to add to" %>
-    <%= f.hidden_field :recipe_id, value: @recipe.id %>
-    <%= f.submit :submit %>
-<% end %>
+        <div class="recipe-info">
+            <h1><%= link_to @recipe.title, @recipe.url, target: "_blank" %></h1>
+            <%= link_to (image_tag @recipe.image_url), @recipe.url, target: "_blank"  %>
+            <ul>
+                <li><b>Dish Type:</b> <%= @recipe.dish_type %></li>
+                <li><b>Vegetarian:</b> <%= @recipe.vegetarian %></li>
+                <li><b>Cuisine:</b> <%= @recipe.cuisine %></li>
+                <li><b>Time:</b> <%= @recipe.time %></li>
+                <li><b>Servings:</b> <%= @recipe.servings %></li>
+                <li><b>Cheap:</b> <%= @recipe.cheap %></li>
+                <li><b>Popular:</b> <%= @recipe.popular %></li>
+                <li><b>Ingredients:</b>
+                    <ul>
+                    <% @recipe.ingredients.each do |ing| %>
+                        <li><%= ing.name %></li>
+                    <% end %>
+                    </ul>
+                </li>
+            </ul>
 
-<br>
-
-<h4>Create a new plan and add this recipe to it:</h4>
-<%= form_for [current_user, @meal_plan] do |f| %>
-    <%= f.label 'Meal Plan Name' %>
-    <%= f.text_field :name %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.hidden_field :recipe_id, value: @recipe.id %>
-    <%= f.submit :submit %>
-<% end %>
+        </div>
+        
+    </div>
+</div>
