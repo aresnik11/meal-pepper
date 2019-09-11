@@ -10,9 +10,19 @@
   </head>
 
   <body>
-    <% if flash[:messages] %>
-      <h3><%= flash[:messages] %></h3>
-    <% end %>
-    <%= yield %>
+  <div>
+    <div></div> <!-- header -->
+    <div>
+      <% if flash[:messages] %>
+        <h3><%= flash[:messages] %></h3>
+      <% end %>
+
+
+      <%= yield %>
+
+
+    </div> <!-- flash message & yield -->
+  </div> <!-- mother container -->
+    
   </body>
 </html>
