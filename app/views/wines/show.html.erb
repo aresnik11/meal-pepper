@@ -4,7 +4,7 @@
       <%= form_for @meal_plan_wine do |f| %>
           <%= f.collection_select :meal_plan_id, @meal_plans, :id, :name, prompt: "Select a meal plan:" %>
           <%= f.hidden_field :wine_id, value: @wine.id %>
-          <%= f.submit :submit %>
+          <%= f.submit :submit, :class=>"ui button" %>
       <% end %>
 
     <br>
@@ -15,7 +15,7 @@
           <%= f.text_field :name %>
           <%= f.hidden_field :user_id, value: current_user.id %>
           <%= f.hidden_field :wine_id, value: @wine.id %>
-          <%= f.submit :submit %>
+          <%= f.submit :submit, :class=>"ui button" %>
       <% end %>
 
   </div> <!-- closes sidebar div-->

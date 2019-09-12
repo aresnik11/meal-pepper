@@ -6,7 +6,7 @@
     <%= form_tag wines_path, method: :get do %>
         <%= label_tag "Filter by varietal:" %>
         <%= collection_select :wine, :varietal, @varietals, :to_s, :to_s, prompt: true %>
-        <%= submit_tag :submit, name: :name_filter %>
+        <%= submit_tag :submit, name: :name_filter, :class=>"ui button" %>
     <% end %>
 
     <br>
@@ -14,7 +14,7 @@
     <%= form_tag wines_path, method: :get do %>
         <%= label_tag "Filter by price:" %>
         <%= collection_select :wine, :price, @prices, :to_s, :to_s, prompt: true %>
-        <%= submit_tag :submit, name: :price_filter %>
+        <%= submit_tag :submit, name: :price_filter, :class=>"ui button" %>
     <% end %>
 
     <br>
@@ -22,7 +22,7 @@
     <%= form_tag wines_path, method: :get do %>
         <%= label_tag "Search for wine:" %>
         <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag :submit, name: nil %>
+        <%= submit_tag :submit, name: nil, :class=>"ui button" %>
     <% end %>
   
 
