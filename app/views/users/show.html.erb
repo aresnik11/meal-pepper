@@ -4,16 +4,20 @@
 
     <h3>Hello, <%= @user.full_name %></h3>
 
-    
+    <div class="ui vertical menu">
+      <%=link_to 'Add Meal Plan', new_user_meal_plan_path(@user), :class=>"item"%>
+      <%=link_to 'Edit User Info', edit_user_path(@user), :class=>"item"%>
+      <%=link_to 'Delete Account', user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete your account?"}, :class=>"item"%>
+    </div>
 
-    
+    <!--
     <%= button_to 'Add Meal Plan', new_user_meal_plan_path(@user), method: :get %>
     <br>
     <%= button_to 'Edit User Info', edit_user_path(@user), method: :get %>
     <br>
-    <!--<%= button_to 'Log Out', logout_path, method: :delete %><br> -->
+    <%= button_to 'Log Out', logout_path, method: :delete %><br> 
 
-    <%= button_to 'Delete Account', user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete your account?"} %>
+    <%= button_to 'Delete Account', user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete your account?"} %>-->
   </div> <!-- closes dashboard-sidebar -->
 
   <div class="dashboard-main">
@@ -34,25 +38,26 @@
         </div>
         <div class="content">
           <!-- RECIPES -->
-          <h4 class="ui sub header">Recipes 🍽</h4>
+          <h4 class="ui sub header">Recipes</h4>
           <div class="ui small feed">
 
             <div class="event">
               <div class="content">
                 <div class="summary">
                   <% meal.recipes.each do |recipe| %>
-                      <%= link_to recipe.title, recipe_path(recipe) %>
+                     
+                      <%= link_to "🍴#{recipe.title}", recipe_path(recipe) %>
                   <% end %>
                 </div>
               </div>
             </div>
             <!-- WINES -->
-            <h4 class="ui sub header">Wines 🍷</h4>
+            <h4 class="ui sub header">Wines</h4>
             <div class="event">
               <div class="content">
                 <div class="summary">
                   <% meal.wines.each do |wine| %>
-                      <%= link_to wine.title, wine_path(wine) %>
+                      <%= link_to "🍷#{wine.title}", wine_path(wine) %>
                   <% end %>
                 </div>
               </div>
