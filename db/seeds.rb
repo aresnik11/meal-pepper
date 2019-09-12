@@ -10,7 +10,7 @@ APIKEY = ENV['SPOONACULAR_API_KEY']
 
 # SEED RECIPE & INGREDIENTS
 
-# snack_response_string = RestClient.get("https://api.spoonacular.com/recipes/complexSearch?number=10&addRecipeInformation=true&fillIngredients=true&type=snack&offset=40&apiKey=#{APIKEY}")
+# snack_response_string = RestClient.get("https://api.spoonacular.com/recipes/complexSearch?number=10&addRecipeInformation=true&fillIngredients=true&type=salad&offset=10&apiKey=#{APIKEY}")
 # snack_response_hash = JSON.parse(snack_response_string)
 
 # snack_response_hash["results"].each do |recipe|
@@ -24,7 +24,7 @@ APIKEY = ENV['SPOONACULAR_API_KEY']
 #     popular = recipe["veryPopular"]
 #     servings = recipe["servings"]
 #     cuisine = recipe["cuisines"].join(", ")
-#     new_recipe = Recipe.find_or_create_by!(title: title, dish_type: "Snack", vegetarian: vegetarian, url: url, image_url: image, time: time, cheap: cheap, popular: popular, servings: servings, cuisine: cuisine)
+#     new_recipe = Recipe.find_or_create_by!(title: title, dish_type: "Salad", vegetarian: vegetarian, url: url, image_url: image, time: time, cheap: cheap, popular: popular, servings: servings, cuisine: cuisine)
 
 #     #build ingredients and recipe ingredients from analyzed instructions
 #     if !recipe["analyzedInstructions"].empty?
@@ -50,7 +50,7 @@ APIKEY = ENV['SPOONACULAR_API_KEY']
 
 # SEED WINES
 
-# wine_response_string = RestClient.get("https://api.spoonacular.com/food/wine/recommendation?wine=champagne&number=3&apiKey=#{APIKEY}")
+# wine_response_string = RestClient.get("https://api.spoonacular.com/food/wine/recommendation?wine=shiraz&number=10&apiKey=#{APIKEY}")
 # wine_response_hash = JSON.parse(wine_response_string)
 
 # wine_response_hash["recommendedWines"].each do |wine|
@@ -59,7 +59,7 @@ APIKEY = ENV['SPOONACULAR_API_KEY']
 #     price = wine["price"]
 #     rating = wine["averageRating"]
 #     image_url = wine["imageUrl"]
-#     varietal = "Champagne"
+#     varietal = "Shiraz"
 #     Wine.find_or_create_by!(title: title, description: description, price: price, rating: rating, image_url: image_url, varietal: varietal)
 # end
 

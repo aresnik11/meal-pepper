@@ -10,8 +10,34 @@
   </head>
 
   <body>
-  <div>
-    <div></div> <!-- header -->
+  <!-- HEADER-->
+    <header class="header-basic-light header-fixed">
+
+	    <div class="header-limiter">
+
+		  <h1><span><%= image_tag 'logo.png' %></span></h1>
+
+        <nav>
+          
+
+          <% if current_user %>
+            <%= link_to('My Dashboard', user_path(current_user)) %>
+            <%= link_to('Recipes', recipes_path) %>
+            <%= link_to('Wines', wines_path) %>
+            <%= link_to('Log Out', logout_path, method: :delete) %>
+          <% else %>
+            <%= link_to('Log In', login_path) %>
+            <%= link_to('Sign Up', signup_path) %>
+          <% end %>
+        </nav>
+      </div>
+
+    </header>
+
+    <!-- You need this element to prevent the content of the page from jumping up -->
+    <div class="header-fixed-placeholder"></div>
+
+    <!-- Flash Messages -->
     <div>
       <% if flash[:messages] %>
         <h3><%= flash[:messages] %></h3>
@@ -21,8 +47,8 @@
       <%= yield %>
 
 
-    </div> <!-- flash message & yield -->
-  </div> <!-- mother container -->
+    </div> <!-- end flash message & yield -->
+  </div> <!-- end mother container -->
     
   </body>
 </html>
