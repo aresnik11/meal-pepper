@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+  get 'groceries/index'
   resources :recipes, only: [:index, :show]
   resources :meal_plan_recipes, only: [:create, :destroy]
   resources :wines, only: [:index, :show]
   resources :meal_plan_wines, only: [:create, :destroy]
   resources :users, except: [:new] do 
     resources :meal_plans
+    resources :ingredients, only: [:index]
   end
   
   #user routes

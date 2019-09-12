@@ -14,6 +14,7 @@
 <br>
 <%= button_to 'Edit User Info', edit_user_path(@user), method: :get %>
 <br>
-<%= button_to 'Log Out', logout_path, method: :delete %>
-<br>
 <%= button_to 'Delete Account', user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete your account?"} %>
+
+<br>
+<%= button_to 'Get Grocery List', user_ingredients_path(@user), method: :get %>
