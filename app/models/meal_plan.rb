@@ -28,4 +28,17 @@ class MealPlan < ApplicationRecord
       errors.add(:name, "already exists")
     end
   end
+
+  def ingredient_names_by_recipe
+    rec_ings = {}
+    self.recipes.each do |rec|
+      title = rec.title
+      rec_ings[title] = rec.ingredient_names
+    end
+    self.wines.each do |wine|
+      title = wine.title
+      rec_ings[title] = []
+    end
+    rec_ings
+  end
 end

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thanks for using Meal Pepper, <%= @user.first_name %></h1>
+    <h2>Grocery List:</h2>
+    <% @grocery_list.each do |meal_plan, recipes| %>
+        <% if !recipes.empty? %>
+            <h3><%= meal_plan %></h3>
+            <% recipes.each do |rec_name, ings| %>
+                <h4><%= rec_name %></h4>
+                <ul>
+                    <% ings.each do |ing| %>
+                        <li><%= ing %></li>
+                    <% end %>
+                </ul>
+            <% end %>
+        <% end %>
+    <% end %>
+
+  </body>
+</html>

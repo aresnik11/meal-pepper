@@ -1,0 +1,17 @@
+
+Thanks for using Meal Pepper, <%= @user.first_name %>
+===============================================
+ 
+Grocery List:
+ 
+<% @grocery_list.each do |meal_plan, recipes| %>
+        <% if !recipes.empty? %>
+            Meal Plan: <%= meal_plan %>
+            <% recipes.each do |rec_name, ings| %>
+                Recipe: <%= rec_name %>
+                Ingredients: <% ings.each do |ing| %>
+                    <%= ing %>
+                <% end %>
+            <% end %>
+        <% end %>
+    <% end %>

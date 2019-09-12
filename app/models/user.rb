@@ -15,5 +15,12 @@ class User < ApplicationRecord
         end
     end
 
-    
+    def ingredients_by_meal_plan
+        meal_plan_recipe_ings = {}
+        self.meal_plans.each do |meal_plan|
+            name = meal_plan.name
+            meal_plan_recipe_ings[name] = meal_plan.ingredient_names_by_recipe
+        end
+        meal_plan_recipe_ings
+    end
 end
