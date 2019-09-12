@@ -13,5 +13,7 @@ class User < ApplicationRecord
         self.meal_plans.each do |meal_plan|
           meal_plan.delete
         end
-      end
+    end
+
+    
 end
