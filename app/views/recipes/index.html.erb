@@ -7,7 +7,7 @@
             <%= form_tag recipes_path, method: :get do %>
                 <%= label_tag "Filter by meal type:" %>
                 <%= collection_select :recipe, :dish_type, @dish_types, :to_s, :to_s, prompt: true, :class=>"ui search dropdown" %>
-                <%= submit_tag :submit, name: :filter, :class=>"ui red basic button" %>
+                <%= submit_tag :submit, name: :filter %>
             <% end %>
 
       
@@ -21,7 +21,7 @@
             <% end %>
             </div>
 
-            <p>Number of recipes: <%= @count %></p>
+            <h5>Number of recipes: <%= @count %></h5>
         </div> <!-- closing index-sidebar -->
 
         <div class="index-all-items">
@@ -36,14 +36,18 @@
                             <!--<h2><%= link_to recipe.title, recipe_path(recipe) %></h2>-->
                             <h3><%= recipe.dish_type %></h3>
                             <ul>
-                                <li><span class="icon icon-users"></span><span><%= recipe.servings %></span></li>
-                                <li><span class="icon icon-clock"></span><span><%= recipe.time %></span></li>
+                                <li><span class="icon-time icon-users"><%= image_tag('001-user.png') %></span><span><%= recipe.servings %></span></li>
+                                <li><span class="icon-time icon-clock"><%= image_tag('005-time.png') %></span><span><%= "#{recipe.time} min"  %></span></li>
+                                <% if recipe.vegetarian == true  %>
+                                  <li><span class="icon-time icon-clock"><%= image_tag('004-salad-1.png') %></span><span></span></li>
+                                <% end %>
                             </ul>
                         </article>
                     </div> <!-- closing recipe-card -->
                   <!--<% end %>-->
                 <% end %>
         </div> <!-- closing index-all-items -->
+
     </div> <!-- closing container -->
     <div class="footer">Footer here</div>
 </div> <!-- closing all-recipes -->

@@ -1,19 +1,41 @@
-<h1>Sign Up</h1>
 
-<%= form_for @user do |f| %>
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name, autofocus: true %><br><br>
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %><br><br>
-    <%= f.label :username %><br>
-    <%= f.text_field :username %><br><br>
-    <%= f.label :email_address %><br>
-    <%= f.email_field :email_address %><br><br>
-    <%= f.label :password %><br>
-    <%= f.password_field :password %><br><br>
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %><br><br>
-    <%= f.label :vegetarian %><br>
-    <%= f.check_box :vegetarian %><br><br>
-    <%= f.submit 'Sign Up' %>
-<% end %>
+  <h1 class="center-header">Sign Up</h1>
+
+  <%= form_for @user, :html => {:class => 'ui form focus'} do |f| %>
+      <%= f.label :first_name %><br>
+      <%= f.text_field :first_name, autofocus: true %><br><br>
+      <%= f.label :last_name %><br>
+      <%= f.text_field :last_name %><br><br>
+      <%= f.label :username %><br>
+      <%= f.text_field :username %><br><br>
+      <%= f.label :email_address %><br>
+      <%= f.email_field :email_address %><br><br>
+      <%= f.label :password %><br>
+      <%= f.password_field :password %><br><br>
+      <%= f.label :password_confirmation %><br>
+      <%= f.password_field :password_confirmation %><br><br>
+      <%= f.label :vegetarian %><br>
+      <%= f.check_box :vegetarian %><br><br>
+      <%= f.submit 'Sign Up' %>
+  <% end %>
+
+
+<!--
+<form class="ui form">
+  <div class="field">
+    <label>First Name</label>
+    <input type="text" name="first-name" placeholder="First Name">
+  </div>
+  <div class="field">
+    <label>Last Name</label>
+    <input type="text" name="last-name" placeholder="Last Name">
+  </div>
+  <div class="field">
+    <div class="ui checkbox">
+      <input type="checkbox" tabindex="0" class="hidden">
+      <label>I agree to the Terms and Conditions</label>
+    </div>
+  </div>
+  <button class="ui button" type="submit">Submit</button>
+</form>
+-->

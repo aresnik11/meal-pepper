@@ -2,3 +2,47 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.center-header {
+  margin-top: 1em;
+  text-align: center;
+}
+
+.form {
+  width: 30%;
+  margin: auto;
+}
+
+// DASHBOARD
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: auto;
+  margin-top: 25px;
+}
+
+
+
+.dashboard-main {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-rows: auto;
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+// .dashboard-main .ui .card {
+//   display: grid;
+// 	margin: 4em auto;
+// 	width: 90%;
+//   border-radius: 5px;
+//   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+// }
+
+.summary a {
+  color: #ee3e1f;
+}
+
+.ui .small .feed .summary {
+  font-size: 12px;
+}
