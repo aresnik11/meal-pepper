@@ -2,8 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.signup {
-  margin: 1em, auto;
+.center-header {
+  margin-top: 1em;
   text-align: center;
 }
 
@@ -21,9 +21,7 @@
   margin-top: 25px;
 }
 
-.dashboard-sidebar {
 
-}
 
 .dashboard-main {
   display: grid;
@@ -43,4 +41,8 @@
 
 .summary a {
   color: #ee3e1f;
+}
+
+.ui .small .feed .summary {
+  font-size: 12px;
 }

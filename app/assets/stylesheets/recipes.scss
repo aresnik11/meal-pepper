@@ -144,11 +144,11 @@ img {
 	}
 
   /* ICONS FROM RECIPE CARD*/
-	.icon {
+	.icon-time {
 	    display: inline;
 	    display: inline-block;
-	    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/203277/recipe-card-icons.svg);
-	    background-repeat: no-repeat;
+      background-repeat: no-repeat;
+      // background-image: url('../images/005-time.png');
 	}
 
 	.icon-calories,.icon-calories\:regular {
@@ -160,7 +160,8 @@ img {
 	.icon-clock,.icon-clock\:regular {
 	    background-position: 0 -19px;
 	    width: 20px;
-	    height: 20px;
+      height: 20px;
+
 	}
 
 	.icon-level,.icon-level\:regular {
