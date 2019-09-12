@@ -6,11 +6,12 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <!--<link rel="stylesheet" type="text/css" href="../../assets/stylesheets/semantic.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="../../assets/stylesheets/semantic.min.css">
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+  <div class="mother_container">
   <!-- HEADER-->
     <header class="header-basic-light header-fixed">
 
@@ -47,8 +48,8 @@
 
       <%= yield %>
 
-
     </div> <!-- end flash message & yield -->
+
   </div> <!-- end mother container -->
     
   </body>

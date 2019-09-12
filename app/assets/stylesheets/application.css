@@ -24,6 +24,7 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	height: 80px;
   background-color: #fff;
+ 
 }
 
 .header-fixed {
@@ -133,12 +134,15 @@ body {
 	font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
   margin:0;
-	padding:0;
+  padding:0;
+  width: 1900px;
+  margin: auto;
 }
 
 .container {
   margin-top: 25px;
 }
+
 
 a {
   color: #ee3e1f;
@@ -153,3 +157,26 @@ a {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 } */
 
+.card_link {
+  text-decoration: none;
+  /* Makes sure the link doesn't get underlined */
+  z-index: 10;
+  /* raises anchor tag above everything else in div */
+}
+
+@font-face {
+  font-family: 'Basic Icons';
+  src: url('/stylesheets/fonts/semantic-ui/basic.icons.eot');
+  src: url('/stylesheets/fonts/semantic-ui/basic.icons.eot?#iefix') format("embedded-opentype"), url('/stylesheets/fonts/semantic-ui/basic.icons.svg#basic.icons') format("svg"), url('/stylesheets/fonts/semantic-ui/basic.icons.woff') format("woff"), url('/stylesheets/fonts/semantic-ui/basic.icons.ttf') format("truetype");
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-decoration: inherit;
+  text-transform: none;
+}
+
+.sidebar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
