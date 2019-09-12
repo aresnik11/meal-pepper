@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .center-header {
-  margin-top: 1em;
+  margin-top: 10px;
   text-align: center;
 }
 
@@ -21,6 +21,9 @@
   margin-top: 25px;
 }
 
+.sidebar {
+  margin-left: 10px;
+}
 
 
 .dashboard-main {
@@ -45,4 +48,8 @@
 
 .ui .small .feed .summary {
   font-size: 12px;
+}
+
+.get-off-the-header {
+  margin-top: 10px;
 }

@@ -1,17 +1,19 @@
-<h1>Grocery List</h1>
+<div class="get-off-the-header sidebar">
+  <h1>Grocery List</h1>
 
-<%= button_to 'Email Grocery List', user_ingredients_path(current_user), method: :get, params: { email: :success } %>
+  <%= button_to 'Email Grocery List', user_ingredients_path(current_user), method: :get, params: { email: :success }, :class=>"ui button" %>
 
-<% @mp_rec_ings.each do |meal_plan, recipes| %>
-    <% if !recipes.empty? %>
-        <h3><%= meal_plan %></h3>
-        <% recipes.each do |rec_name, ings| %>
-            <h4><%= rec_name %></h4>
-            <ul>
-                <% ings.each do |ing| %>
-                    <li><%= ing %></li>
-                <% end %>
-            </ul>
-        <% end %>
-    <% end %>
-<% end %>
+  <% @mp_rec_ings.each do |meal_plan, recipes| %>
+      <% if !recipes.empty? %>
+          <h3><%= meal_plan %></h3>
+          <% recipes.each do |rec_name, ings| %>
+              <h4><%= rec_name %></h4>
+              <ul>
+                  <% ings.each do |ing| %>
+                      <li><%= ing %></li>
+                  <% end %>
+              </ul>
+          <% end %>
+      <% end %>
+  <% end %>
+</div>

@@ -1,4 +1,4 @@
-
+<div class="get-off-the-header">
   <h1 class="center-header">Edit Profile</h1>
 
   <%= form_for @user, :html => {:class => 'ui form focus'} do |f| %>
@@ -16,6 +16,6 @@
       <%= f.password_field :password_confirmation %><br><br>
       <%= f.label :vegetarian %><br>
       <%= f.check_box :vegetarian %><br><br>
-      <%= f.submit 'Edit Information' %>
+      <%= f.submit 'Edit Information', :class=>"ui button" %>
   <% end %>
-
+</div>

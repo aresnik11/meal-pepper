@@ -5,7 +5,7 @@
             <%= form_for @meal_plan_recipe do |f| %>
             <%= f.collection_select :meal_plan_id, @meal_plans, :id, :name, prompt: "Select a meal plan to add to" %>
             <%= f.hidden_field :recipe_id, value: @recipe.id %>
-            <%= f.submit :submit %>
+            <%= f.submit :submit, :class=>"ui button"%>
             <% end %>
 
             <br>
@@ -16,7 +16,7 @@
                 <%= f.text_field :name %>
                 <%= f.hidden_field :user_id, value: current_user.id %>
                 <%= f.hidden_field :recipe_id, value: @recipe.id %>
-                <%= f.submit :submit %>
+                <%= f.submit :submit, :class=>"ui button" %>
             <% end %>
         </div>
 
@@ -24,16 +24,22 @@
             <div class="recipe-info">
                 <h1><%= link_to @recipe.title, @recipe.url, target: "_blank" %></h1>
                 <%= link_to (image_tag @recipe.image_url), @recipe.url, target: "_blank"  %>
-                <ul>
-                    <li><b>Dish Type:</b> <%= @recipe.dish_type %></li>
-                    <li><b>Vegetarian:</b> <%= @recipe.vegetarian %></li>
-                    <li><b>Cuisine:</b> <%= @recipe.cuisine %></li>
-                    <li><b>Time:</b> <%= @recipe.time %></li>
-                    <li><b>Servings:</b> <%= @recipe.servings %></li>
-                    <li><b>Cheap:</b> <%= @recipe.cheap %></li>
-                    <li><b>Popular:</b> <%= @recipe.popular %></li>
-                </ul>
+                
+          
+        
+                  <ul>
+                      <li><b>Dish Type:</b> <%= @recipe.dish_type %></li>
+                      <li><b>Vegetarian:</b> <%= @recipe.vegetarian %></li>
+                      <li><b>Cuisine:</b> <%= @recipe.cuisine %></li>
+                      <li><b>Time:</b> <%= @recipe.time %></li>
+                      <li><b>Servings:</b> <%= @recipe.servings %></li>
+                      <li><b>Cheap:</b> <%= @recipe.cheap %></li>
+                      <li><b>Popular:</b> <%= @recipe.popular %></li>
+                  </ul>
+                
             </div>
+
+   
 
             <div class="ingredient-info">
                 <b>Ingredients:</b>

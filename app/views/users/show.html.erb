@@ -1,14 +1,16 @@
 <div class="container">
-  <div class="dashboard-sidebar">
+  <div class="sidebar">
     <h1>My Dashboard</h1>
 
     <h3>Hello, <%= @user.full_name %></h3>
 
     <div class="ui vertical menu">
       <%=link_to 'Add Meal Plan', new_user_meal_plan_path(@user), :class=>"item"%>
+      <%=link_to 'Get Grocery List', user_ingredients_path(@user), :class=>"item"%>
       <%=link_to 'Edit User Info', edit_user_path(@user), :class=>"item"%>
       <%=link_to 'Delete Account', user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete your account?"}, :class=>"item"%>
     </div>
+
 
     <!--
     <%= button_to 'Add Meal Plan', new_user_meal_plan_path(@user), method: :get %>
@@ -17,7 +19,10 @@
     <br>
     <%= button_to 'Log Out', logout_path, method: :delete %><br> 
 
-    <%= button_to 'Delete Account', user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete your account?"} %>-->
+    <%= button_to 'Delete Account', user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete your account?"} %>
+    <%= button_to 'Get Grocery List', user_ingredients_path(@user), method: :get %>
+
+    -->
   </div> <!-- closes dashboard-sidebar -->
 
   <div class="dashboard-main">
