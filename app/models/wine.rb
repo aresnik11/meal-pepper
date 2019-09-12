@@ -56,4 +56,10 @@ class Wine < ApplicationRecord
         end
     end
 
+    def self.titles
+        Wine.all.map do |wine|
+            wine.title
+        end
+    end
+
 end

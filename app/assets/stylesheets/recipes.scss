@@ -12,10 +12,10 @@
 .container {
     display: grid;
     grid-template-columns: 1fr 3fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: auto;
 }
 
-.index-sidebar {
+.sidebar {
     // border-style: solid;
     // border-width: 2px;
     // border-color: orange;
@@ -26,6 +26,13 @@
     // margin-top: 4%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 10px;
+}
+
+.recipe {
+    // margin-top: 4%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     grid-gap: 10px;
 }
 
@@ -57,14 +64,14 @@ img {
 	background: #fff;
 	margin: 4em auto;
 	width: 90%;
-	max-width: 496px;
+	max-width: 312px;
 	border-radius: 5px;
 
 	aside {
 		position: relative;
 
 		img {
-			border-radius: 5px 5px;
+			border-radius: 5px 5px 0px 0px;
 		}
 
 		.button {

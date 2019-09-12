@@ -43,4 +43,27 @@ class Recipe < ApplicationRecord
         end
     end
 
+    def self.titles
+        Recipe.all.map do |recipe|
+            recipe.title
+        end
+    end
+
+    def self.not_unique_names
+        not_unique = Recipe.all.select do |recipe|
+            Recipe.titles.count(recipe.title) > 1
+        end
+        not_unique.map do |rec|
+            rec.title
+        end.uniq
+    end
+
+    # def delete_recipe
+    #     self.ingredients.each do |ing|
+    #         rec_ing = RecipeIngredient.find_by(recipe_id: self.id, ingredient_id: ing.id)
+    #         rec_ing.delete
+    #     end
+    #     self.delete
+    # end
+
 end
