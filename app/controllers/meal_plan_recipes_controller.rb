@@ -3,6 +3,7 @@ class MealPlanRecipesController < ApplicationController
         @meal_plan_recipe = MealPlanRecipe.create(meal_plan_recipe_params)
         if @meal_plan_recipe.valid?
             @meal_plan = MealPlan.find(params[:meal_plan_recipe][:meal_plan_id])
+            flash[:notice] = "Recipe successfully added"
             redirect_to user_meal_plan_path(current_user, @meal_plan)
         else
             flash[:messages] = @meal_plan_recipe.errors.full_messages
@@ -14,6 +15,7 @@ class MealPlanRecipesController < ApplicationController
     def destroy
         meal_plan_recipe = MealPlanRecipe.find(params[:id])
         meal_plan = MealPlan.find(meal_plan_recipe.meal_plan_id)
+        flash[:notice] = "Recipe successfully deleted"
         meal_plan_recipe.delete
         redirect_to user_meal_plan_path(current_user, meal_plan)
     end

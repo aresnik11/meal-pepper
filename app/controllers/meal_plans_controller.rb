@@ -22,6 +22,7 @@ class MealPlansController < ApplicationController
       elsif params[:meal_plan][:wine_id]
         MealPlanWine.create(wine_id: params[:meal_plan][:wine_id], meal_plan_id: @meal_plan.id)
       end
+      flash[:notice] = "Meal plan successfully created"
       redirect_to user_meal_plan_path(current_user, @meal_plan)
     else
       flash[:messages] = @meal_plan.errors.full_messages
@@ -34,6 +35,7 @@ class MealPlansController < ApplicationController
 
   def update
     if @meal_plan.update(meal_plan_params)
+      flash[:notice] = "Meal plan successfully updated"
       redirect_to user_meal_plan_path(current_user, @meal_plan)
     else
       flash[:messages] = @meal_plan.errors.full_messages
@@ -45,6 +47,7 @@ class MealPlansController < ApplicationController
     @meal_plan.delete_recipes
     @meal_plan.delete_wines
     @meal_plan.delete
+    flash[:notice] = "Meal plan successfully deleted"
     redirect_to user_path(current_user)
   end
 
@@ -53,7 +56,7 @@ class MealPlansController < ApplicationController
   def limit_view
     meal_plan = MealPlan.find(params[:id])
     if current_user.id != params[:user_id].to_i || !current_user.meal_plans.include?(meal_plan)
-      flash[:messages] = "You don't have access to that meal plan"
+      flash[:messages] = ["You don't have access to that meal plan"]
       redirect_to user_path(current_user)
     end
   end

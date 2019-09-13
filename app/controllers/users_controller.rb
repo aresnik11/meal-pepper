@@ -11,7 +11,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         @user.username.downcase!
         if @user.save
-            flash[:messages] = "You've successfully created an account"
+            flash[:notice] = "Successfully created account"
             session[:user_id] = @user.id
             redirect_to user_path(@user)
         else
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
     def update
         if @user.update(user_params)
-            flash[:messages] = "Successfully updated"
+            flash[:notice] = "Successfully updated account"
             redirect_to user_path(@user)
         else
             flash[:messages] = @user.errors.full_messages
@@ -40,6 +40,7 @@ class UsersController < ApplicationController
     def destroy
         @user.delete_meal_plans
         @user.delete
+        flash[:notice] = "Successfully deleted account"
         redirect_to signup_path
     end
 

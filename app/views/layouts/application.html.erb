@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MealPepper</title>
+    <title>Meal Pepper</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -41,9 +41,15 @@
     <div class="header-fixed-placeholder"></div>
 
     <!-- Flash Messages -->
-    <div>
-      <% if flash[:messages] %>
-        <h3><%= flash[:messages] %></h3>
+    <div class="">
+      <% if flash[:messages] && flash[:messages].is_a?(Array) %>
+        <% flash[:messages].each do |error| %>
+          <h3 class="ui error message"><%= error %></h3>
+        <% end %>
+      <% end %>
+
+      <% if flash[:notice] %>
+        <h3 class="ui info message"><%= flash[:notice] %></h3>
       <% end %>
 
 

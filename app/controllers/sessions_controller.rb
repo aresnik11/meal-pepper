@@ -8,15 +8,17 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: params[:username].downcase)
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
+      flash[:notice] = "Successfully logged in"
       redirect_to user_path(@user)
     else
-      flash[:messages] = "Invalid username or password"
+      flash[:messages] = ["Invalid username or password"]
       redirect_to login_path
     end
   end
 
   def destroy
     session.delete(:user_id)
+    flash[:notice] = "Successfully logged out"
     redirect_to login_path
   end
 end

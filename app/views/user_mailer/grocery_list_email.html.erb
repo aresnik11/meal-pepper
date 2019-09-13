@@ -4,13 +4,12 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Thanks for using Meal Pepper, <%= @user.first_name %></h1>
-    <h2>🌶 Grocery List 🌶</h2>
+    <h1>🌶 Grocery List 🌶</h1>
     <% @grocery_list.each do |meal_plan, recipes| %>
         <% if !recipes.empty? %>
-            <h3><%= meal_plan %></h3>
+            <h2><%= meal_plan %></h2>
             <% recipes.each do |rec_name, ings| %>
-                <h4><%= rec_name %></h4>
+                <h3><%= rec_name %></h3>
                 <ul>
                     <% ings.each do |ing| %>
                         <li><%= ing %></li>
@@ -19,6 +18,9 @@
             <% end %>
         <% end %>
     <% end %>
+    <br>
+    <h4>Thanks for using Meal Pepper, <%= @user.first_name %>.</h4>
+    <h4>Have a spicy day!</h4>
 
   </body>
 </html>

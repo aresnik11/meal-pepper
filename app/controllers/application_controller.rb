@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
     def authorized?
         unless logged_in?
-            flash[:messages] = "You must be logged in to access this page."
+            flash[:messages] = ["You must be logged in to access this page"]
             redirect_to login_path 
         end
     end

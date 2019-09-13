@@ -4,7 +4,7 @@ class IngredientsController < ApplicationController
 
     if params[:email]
       UserMailer.grocery_list_email(current_user, current_user.ingredients_by_meal_plan).deliver_now
-      flash[:messages] = "Email Sent"
+      flash[:notice] = "Successfully sent email"
       redirect_to user_ingredients_path(current_user)
     end
   end
