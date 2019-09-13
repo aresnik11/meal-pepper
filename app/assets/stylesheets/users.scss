@@ -7,7 +7,7 @@
   text-align: center;
 }
 
-.form {
+.center-form {
   width: 30%;
   margin: auto;
 }
@@ -26,12 +26,32 @@
 }
 
 
+// .index-all-items {
+//   // margin-top: 4%;
+//   display: grid;
+//   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+// grid-gap: 10px;
+// margin-right: 5%;
+// }
+
+// .recipe, .wine {
+//   // margin-top: 4%;
+//   display: grid;
+//   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+//   grid-gap: 10px;
+// }
+
 .dashboard-main {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-template-rows: auto;
   grid-gap: 10px;
   padding: 10px;
+  // margin-right: 5%;
+}
+
+.bottom-button {
+
 }
 
 // .dashboard-main .ui .card {
@@ -51,5 +71,6 @@
 }
 
 .get-off-the-header {
-  margin-top: 10px;
+  margin-top: 25px;
+  margin-bottom: 50px;
 }

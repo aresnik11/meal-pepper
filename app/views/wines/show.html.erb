@@ -1,40 +1,58 @@
 <div class="container">
   <div class="sidebar">
-    <h4>Add this wine to an existing meal plan:</h4>
-      <%= form_for @meal_plan_wine do |f| %>
-          <%= f.collection_select :meal_plan_id, @meal_plans, :id, :name, prompt: "Select a meal plan:" %>
+  <div class="sidebar-fixed">
+    <h1>Add to Meal Plan</h1>
+    <br>
+
+    <h4>Add to existing meal plan:</h4>
+      <%= form_for @meal_plan_wine, :html => {:class => 'ui form focus search-form'} do |f| %>
+          <%= f.collection_select :meal_plan_id, @meal_plans, :id, :name, {prompt: "Select a meal plan"}, class: "ui selection dropdown" %><br><br>
           <%= f.hidden_field :wine_id, value: @wine.id %>
-          <%= f.submit :submit, :class=>"ui button" %>
+          <%= f.submit 'Submit', :class=>"ui button" %>
       <% end %>
 
     <br>
 
-    <h4>Create a new plan and add this wine to it:</h4>
-      <%= form_for [current_user, @meal_plan] do |f| %>
-          <%= f.label 'Meal Plan Name' %>
-          <%= f.text_field :name %>
+    <h4>Add to new meal plan:</h4>
+      <%= form_for [current_user, @meal_plan], :html => {:class => 'ui form focus search-form'} do |f| %>
+          <%= f.text_field :name, :placeholder=>"Meal plan name" %><br><br>
           <%= f.hidden_field :user_id, value: current_user.id %>
           <%= f.hidden_field :wine_id, value: @wine.id %>
-          <%= f.submit :submit, :class=>"ui button" %>
+          <%= f.submit 'Submit', :class=>"ui button" %>
       <% end %>
 
+  </div>
   </div> <!-- closes sidebar div-->
 
   <div class="wine">
+  <div>
     <h1><%=  @wine.title %></h1>
-
+    <br>
     <%= image_tag @wine.image_url  %>
+    <br><br>
+    </div>
+    <div class="wine-info">
+    <table class="ui selectable definition red table">
+      <tbody>
+          <tr>
+              <td>Varietal</td>
+              <td><%= @wine.varietal %></td>
+          </tr>
+          <tr>
+              <td>Description</td>
+              <td><%= @wine.description %></td>
+          </tr>
+          <tr>
+              <td>Price</td>
+              <td><%= @wine.price %></td>
+          </tr>
+          <tr>
+              <td>Average Rating</td>
+              <td><%= (@wine.rating * 100).to_i %></td>
+          </tr>
+      </tbody>
+  </table>     
+  </div>      
 
-    <ul>
-        <li><b>Description:</b> <%= @wine.description %></li>
-        <li><b>Average Rating:</b> <%= (@wine.rating * 100).to_i %></li>
-        <li><b>Varietal:</b> <%= @wine.varietal %></li>
-        <li><b>Price:</b> <%= @wine.price %></li>
-
-    </ul>
-
-
-    
-    
   </div> <!-- closes recipe div-->
 </div> <!-- closes container div-->

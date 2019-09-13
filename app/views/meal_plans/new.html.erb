@@ -1,9 +1,27 @@
 <div class="get-off-the-header">
-<h1 class="center-header">Create a New Meal Plan</h1>
+ <div class="sidebar">
+    <div class="sidebar-fixed">
+    <h1>My Dashboard</h1>
+    <h3>Hello, <%= current_user.full_name %></h3>
+    <br>
 
-<%= form_for [current_user, @meal_plan], :html => {:class => 'ui form focus'} do |f| %>
-    <%= f.text_field :name, autofocus: true, :placeholder=>"Enter a name for your new meal plan..." %>
-    <%= f.hidden_field :user_id, value: current_user.id %><br><br>
-    <%= f.submit :submit, :class=>"ui button"%>
-<% end %>
+    <div class="ui vertical menu">
+      <%=link_to 'Dashboard Home', user_path(current_user), :class=>"item"%>
+      <%=link_to 'Add Meal Plan', new_user_meal_plan_path(current_user), :class=>"item"%>
+      <%=link_to 'Get Grocery List', user_ingredients_path(current_user), :class=>"item"%>
+      <%=link_to 'Edit User Info', edit_user_path(current_user), :class=>"item"%>
+      <%=link_to 'Delete Account', user_path(current_user), method: :delete, data: {confirm: "Are you sure you want to delete your account?"}, :class=>"item"%>
+    </div>
+
+    </div>
+</div>
+<div>
+    <h1 class="center-header">Create a New Meal Plan</h1>
+    <br>
+    <%= form_for [current_user, @meal_plan], :html => {:class => 'ui form focus center-form'} do |f| %>
+        <%= f.text_field :name, autofocus: true, :placeholder=>"Enter a name for your new meal plan..." %>
+        <%= f.hidden_field :user_id, value: current_user.id %><br><br>
+        <%= f.submit 'Submit', :class=>"ui button"%>
+    <% end %>
+</div>
 </div>

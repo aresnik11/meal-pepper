@@ -1,9 +1,9 @@
 class WinesController < ApplicationController
   def index
-    if params[:name_filter] && params[:wine][:varietal] != "All"
+    if params[:name_filter] && params[:wine][:varietal] != "" && params[:wine][:varietal] != "All"
       @wines = Wine.by_varietal(params[:wine][:varietal])
       @varietal = params[:wine][:varietal]
-    elsif params[:price_filter]
+    elsif params[:price_filter] && params[:wine][:price] != ""
       @wines = Wine.by_price(params[:wine][:price])
       @price_range = params[:wine][:price]
     elsif params[:search]

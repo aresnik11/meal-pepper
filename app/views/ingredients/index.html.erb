@@ -1,19 +1,48 @@
-<div class="get-off-the-header sidebar">
-  <h1>Grocery List</h1>
+<div class="container">
+ <div class="sidebar">
+  <div class="sidebar-fixed">
+    <h1>My Dashboard</h1>
+    <h3>Hello, <%= current_user.full_name %></h3>
+    <br>
 
-  <%= button_to 'Email Grocery List', user_ingredients_path(current_user), method: :get, params: { email: :success }, :class=>"ui button" %>
+    <div class="ui vertical menu">
+      <%=link_to 'Dashboard Home', user_path(current_user), :class=>"item"%>
+      <%=link_to 'Add Meal Plan', new_user_meal_plan_path(current_user), :class=>"item"%>
+      <%=link_to 'Get Grocery List', user_ingredients_path(current_user), :class=>"item"%>
+      <%=link_to 'Edit User Info', edit_user_path(current_user), :class=>"item"%>
+      <%=link_to 'Delete Account', user_path(current_user), method: :delete, data: {confirm: "Are you sure you want to delete your account?"}, :class=>"item"%>
+    </div>
 
+  </div>
+  </div>
+
+
+ <div>
+  <h1 class="">Grocery List</h1>
+  <%= button_to 'Email Grocery List', user_ingredients_path(current_user), method: :get, params: { email: :success }, :class=>"ui button" %><br><br>
+</div>
+<br><br>
+<div class="grocery">
   <% @mp_rec_ings.each do |meal_plan, recipes| %>
       <% if !recipes.empty? %>
-          <h3><%= meal_plan %></h3>
+        <div class="grocery-card">
+          <h2><%= meal_plan %></h2>
           <% recipes.each do |rec_name, ings| %>
-              <h4><%= rec_name %></h4>
-              <ul>
-                  <% ings.each do |ing| %>
-                      <li><%= ing %></li>
-                  <% end %>
-              </ul>
+                <table class="ui selectable red table">
+                    <thead>
+                        <tr><th><%= rec_name %></th></tr>
+                    </thead>
+                    <tbody>
+                        <% ings.each do |ing| %>
+                            <tr><td><%= ing %></td></tr>
+                        <% end %>
+                    </tbody>
+                </table>
+                <br>
           <% end %>
+          <br><br>
+        </div>
       <% end %>
   <% end %>
+  </div>
 </div>

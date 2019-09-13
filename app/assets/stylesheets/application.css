@@ -21,24 +21,26 @@
 .header-basic-light{
 	padding: 20px 40px;
 	box-sizing:border-box;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	height: 80px;
-  background-color: #fff;
+  	background-color: #fff;
  
 }
 
 .header-fixed {
-  top:-100px;
-
+	/* top:-100px; */
+	top: 0px;
 	-webkit-transition:top 0.3s;
 	transition:top 0.3s;
-  
+	position: fixed;
+	width: 100%;
+	z-index: 10;
 }
 
 .header-basic-light .header-limiter {
 	max-width: 1200px;
 	text-align: center;
-  margin: 0 auto;
+  	margin: 0 auto;
 }
 
 /*	The header placeholder. It is displayed when the header is fixed to the top of the
@@ -46,7 +48,6 @@
 
   .header-fixed-placeholder{
     height: 80px;
-    display: none;
   }
 
 /* Header Logo */
@@ -59,8 +60,8 @@
 
 .header-basic-light .header-limiter img{
 	float: left;
-  height: 50px;
-  width: auto;
+  	height: 50px;
+  	width: auto;
 	line-height: 40px;
 	margin: 0;
 }
@@ -89,8 +90,8 @@
 }
 
 .header-fixed .header-limiter nav a:hover{
-  /* opacity: 1; */
-  color: #ee3e1f;
+  	/* opacity: 1; */
+  	color: #ee3e1f;
 }
 
 .header-basic-light .header-limiter nav a.selected {
@@ -131,7 +132,7 @@ body {
   /* background-color: #e6e6e6; */
   background-color: #f9fafb;
 	/* background-image: linear-gradient(-45deg, #f2f2f2 5%, #cccccc); */
-	font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
   margin:0;
   padding:0;
@@ -139,12 +140,8 @@ body {
   margin: auto;
 }
 
-.container {
-  margin-top: 25px;
-}
 
-
-a {
+a, a:hover, .wine h1 {
   color: #ee3e1f;
 }
 
@@ -173,10 +170,4 @@ a {
   font-variant: normal;
   text-decoration: inherit;
   text-transform: none;
-}
-
-.sidebar {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
 }

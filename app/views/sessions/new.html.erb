@@ -4,8 +4,8 @@
 
 <div class="ui placeholder segment">
   <div class="ui two column very relaxed stackable grid">
-    <div class="column">
-      <div class="ui form">
+    <div class="column get-off-the-header">
+      <div class="ui form focus user-form">
         <div class="field">
 
 <%= form_tag login_path do %>
@@ -13,7 +13,7 @@
     <%= text_field_tag :username, '', autofocus: true%><br><br>
     <%= label_tag :password %>
     <%= password_field_tag :password %><br><br>
-    <%= submit_tag 'Log In', :class=>"ui blue submit button" %>
+    <%= submit_tag 'Log In', :class=>"ui big submit button" %>
 <% end %>
 
 
@@ -32,10 +32,11 @@
     </div>
   
     <div class="middle aligned column">
-      <div class="ui big button">
-        <i class="signup icon"></i>
-        <a href="/signup"> Sign Up </a>
-      </div>
+        <div class="">
+          <%= link_to signup_path do %>
+            <button class="ui big submit button">Sign Up</button>
+          <% end %>
+        </div>
     </div>
   </div>
   <div class="ui vertical divider">

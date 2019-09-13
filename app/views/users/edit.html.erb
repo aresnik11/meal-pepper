@@ -1,7 +1,24 @@
 <div class="get-off-the-header">
+ <div class="sidebar">
+    <div class="sidebar-fixed">
+    <h1>My Dashboard</h1>
+    <h3>Hello, <%= current_user.full_name %></h3>
+    <br>
+
+    <div class="ui vertical menu">
+      <%=link_to 'Dashboard Home', user_path(current_user), :class=>"item"%>
+      <%=link_to 'Add Meal Plan', new_user_meal_plan_path(current_user), :class=>"item"%>
+      <%=link_to 'Get Grocery List', user_ingredients_path(current_user), :class=>"item"%>
+      <%=link_to 'Edit User Info', edit_user_path(current_user), :class=>"item"%>
+      <%=link_to 'Delete Account', user_path(current_user), method: :delete, data: {confirm: "Are you sure you want to delete your account?"}, :class=>"item"%>
+    </div>
+
+    </div>
+</div>
+<div>
   <h1 class="center-header">Edit Profile</h1>
 
-  <%= form_for @user, :html => {:class => 'ui form focus'} do |f| %>
+  <%= form_for @user, :html => {:class => 'ui form focus center-form'} do |f| %>
       <%= f.label :first_name %><br>
       <%= f.text_field :first_name, autofocus: true %><br><br>
       <%= f.label :last_name %><br>
@@ -18,4 +35,5 @@
       <%= f.check_box :vegetarian %><br><br>
       <%= f.submit 'Edit Information', :class=>"ui button" %>
   <% end %>
+  </div>
 </div>

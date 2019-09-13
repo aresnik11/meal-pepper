@@ -1,53 +1,75 @@
 <div>
     <div class="container">
         <div class="sidebar">
-            <h4>Add this recipe to an existing meal plan:</h4>
-            <%= form_for @meal_plan_recipe do |f| %>
-            <%= f.collection_select :meal_plan_id, @meal_plans, :id, :name, prompt: "Select a meal plan to add to" %>
-            <%= f.hidden_field :recipe_id, value: @recipe.id %>
-            <%= f.submit :submit, :class=>"ui button"%>
-            <% end %>
-
+        <div class="sidebar-fixed">
+            <h1>Add to Meal Plan</h1>
             <br>
 
-            <h4>Create a new plan and add this recipe to it:</h4>
-            <%= form_for [current_user, @meal_plan] do |f| %>
-                <%= f.label 'Meal Plan Name' %>
-                <%= f.text_field :name %>
+            <h4>Add to existing meal plan:</h4>
+            <%= form_for @meal_plan_recipe, :html => {:class => 'ui form focus search-form'} do |f| %>
+            <%= f.collection_select :meal_plan_id, @meal_plans, :id, :name, {prompt: "Select a meal plan"}, class: "ui selection dropdown" %><br><br>
+            <%= f.hidden_field :recipe_id, value: @recipe.id %>
+            <%= f.submit 'Submit', :class=>"ui button"%>
+            <% end %>
+
+            <br><br>
+
+            <h4>Add to new meal plan:</h4>
+            <%= form_for [current_user, @meal_plan], :html => {:class => 'ui form focus search-form'} do |f| %>
+                <%= f.text_field :name, :placeholder=>"Meal plan name" %><br><br>
                 <%= f.hidden_field :user_id, value: current_user.id %>
                 <%= f.hidden_field :recipe_id, value: @recipe.id %>
-                <%= f.submit :submit, :class=>"ui button" %>
+                <%= f.submit 'Submit', :class=>"ui button" %>
             <% end %>
+        </div>
         </div>
 
         <div class="recipe">
-            <div class="recipe-info">
-                <h1><%= link_to @recipe.title, @recipe.url, target: "_blank" %></h1>
-                <%= link_to (image_tag @recipe.image_url), @recipe.url, target: "_blank"  %>
-                
-          
-        
-                  <ul>
-                      <li><b>Dish Type:</b> <%= @recipe.dish_type %></li>
-                      <li><b>Vegetarian:</b> <%= @recipe.vegetarian %></li>
-                      <li><b>Cuisine:</b> <%= @recipe.cuisine %></li>
-                      <li><b>Time:</b> <%= @recipe.time %></li>
-                      <li><b>Servings:</b> <%= @recipe.servings %></li>
-                      <li><b>Cheap:</b> <%= @recipe.cheap %></li>
-                      <li><b>Popular:</b> <%= @recipe.popular %></li>
-                  </ul>
-                
-            </div>
-
-   
-
             <div class="ingredient-info">
-                <b>Ingredients:</b>
-                <ul>
-                    <% @recipe.ingredients.each do |ing| %>
-                        <li><%= ing.name %></li>
-                    <% end %>
-                </ul>
+                <h1><%= link_to @recipe.title, @recipe.url, target: "_blank" %></h1>
+                <br>
+                <%= link_to (image_tag @recipe.image_url), @recipe.url, target: "_blank"  %>
+                <br><br>
+                <table class="ui selectable red table">
+                    <thead>
+                        <tr><th>Ingredients</th></tr>
+                    </thead>
+                    <tbody>
+                        <% @recipe.ingredients.each do |ing| %>
+                            <tr><td><%= ing.name %></td></tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+            <div class="recipe-info">
+                <table class="ui selectable definition red table">
+                    <tbody>
+                        <tr>
+                            <td>Dish Type</td>
+                            <td><%= @recipe.dish_type %></td>
+                        </tr>
+                        <tr>
+                            <td>Vegetarian</td>
+                            <td><%= @recipe.vegetarian %></td>
+                        </tr>
+                        <tr>
+                            <td>Time</td>
+                            <td><%= @recipe.time %> min</td>
+                        </tr>
+                        <tr>
+                            <td>Servings</td>
+                            <td><%= @recipe.servings %></td>
+                        </tr>
+                        <tr>
+                            <td>Cheap</td>
+                            <td><%= @recipe.cheap %></td>
+                        </tr>
+                        <tr>
+                            <td>Popular</td>
+                            <td><%= @recipe.popular %></td>
+                        </tr>
+                    </tbody>
+                </table>              
             </div>
 
         </div>

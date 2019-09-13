@@ -1,47 +1,28 @@
 <div class="container">
   <div class="sidebar">
+    <div class="sidebar-fixed">
     <h1>My Dashboard</h1>
-
     <h3>Hello, <%= @user.full_name %></h3>
+    <br>
 
     <div class="ui vertical menu">
+      <%=link_to 'Dashboard Home', user_path(@user), :class=>"item"%>
       <%=link_to 'Add Meal Plan', new_user_meal_plan_path(@user), :class=>"item"%>
       <%=link_to 'Get Grocery List', user_ingredients_path(@user), :class=>"item"%>
       <%=link_to 'Edit User Info', edit_user_path(@user), :class=>"item"%>
       <%=link_to 'Delete Account', user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete your account?"}, :class=>"item"%>
     </div>
 
-
-    <!--
-    <%= button_to 'Add Meal Plan', new_user_meal_plan_path(@user), method: :get %>
-    <br>
-    <%= button_to 'Edit User Info', edit_user_path(@user), method: :get %>
-    <br>
-    <%= button_to 'Log Out', logout_path, method: :delete %><br> 
-
-    <%= button_to 'Delete Account', user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete your account?"} %>
-    <%= button_to 'Get Grocery List', user_ingredients_path(@user), method: :get %>
-
-    -->
+    </div>
   </div> <!-- closes dashboard-sidebar -->
 
-  <div class="dashboard-main">
-
-    <!--
-    <h4>Your Meal Plans:</h4>
-      <ul>
-          <% @meal_plans.each do |meal| %>
-              <li><%= link_to meal.name, user_meal_plan_path(@user, meal) %></li>
-          <% end %>
-      </ul> -->
+  <div class="dashboard-main ui cards">
 
       <!-- MEAL PLAN CARD -->
       <% @meal_plans.each do |meal| %>
       <div class="ui card">
         <div class="content">
           <div class="header"> <%= meal.name %> </div>
-        </div>
-        <div class="content">
           <!-- RECIPES -->
           <h4 class="ui sub header">Recipes</h4>
           <div class="ui small feed">
@@ -53,9 +34,9 @@
                      
                       <%= link_to "🍴#{recipe.title}", recipe_path(recipe) %>
                   <% end %>
-                </div>
-              </div>
-            </div>
+                </div> <!-- closes summary -->
+              </div> <!-- closes content -->
+            </div> <!-- closes event -->
             <!-- WINES -->
             <h4 class="ui sub header">Wines</h4>
             <div class="event">
@@ -64,19 +45,19 @@
                   <% meal.wines.each do |wine| %>
                       <%= link_to "🍷#{wine.title}", wine_path(wine) %>
                   <% end %>
-                </div>
-              </div>
-            </div>
+                </div> <!-- closes summary -->
+              </div> <!-- closes content -->
+            </div> <!-- closes event -->
 
 
-          </div>
-        </div>
+          </div> <!-- closes ui small feed -->
+        </div> <!-- closes content -->
         <div class="extra content">
           <%= link_to user_meal_plan_path(@user, meal) do %>
-            <button class="ui button">View Detail</button>
+            <button class="ui button bottom-button">View Detail</button>
           <% end %>
         </div>
-      
+
       </div> <!-- closes class="ui card" -->
     <% end %>
 

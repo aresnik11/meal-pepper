@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   def index
-    if params[:filter] && params[:recipe][:dish_type] != "All"
+    if params[:filter] && params[:recipe][:dish_type] != "" && params[:recipe][:dish_type] != "All"
       @recipes = Recipe.by_dish_type(params[:recipe][:dish_type])
       @dish_type = params[:recipe][:dish_type]
     elsif params[:search]

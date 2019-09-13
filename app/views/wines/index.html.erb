@@ -1,39 +1,37 @@
 <div class="container">
 
   <div class="sidebar">
+  <div class="sidebar-fixed">
     <h1><%= @varietal %> Wines <%= @price_range %></h1>
 
-    <%= form_tag wines_path, method: :get do %>
-        <%= label_tag "Filter by varietal:" %>
-        <%= collection_select :wine, :varietal, @varietals, :to_s, :to_s, prompt: true %>
-        <%= submit_tag :submit, name: :name_filter, :class=>"ui button" %>
+    <h4>Number of wines: <%= @count %></h4>
+
+    <br><br>
+
+    <%= form_tag wines_path, method: :get, class: 'ui form focus search-form' do %>
+        <%= collection_select :wine, :varietal, @varietals, :to_s, :to_s, {prompt: "Filter by varietal"}, class: "ui selection dropdown" %><br><br>
+        <%= submit_tag 'Submit', name: :name_filter, :class=>"ui button" %>
     <% end %>
 
-    <br>
+    <br><br>
 
-    <%= form_tag wines_path, method: :get do %>
-        <%= label_tag "Filter by price:" %>
-        <%= collection_select :wine, :price, @prices, :to_s, :to_s, prompt: true %>
-        <%= submit_tag :submit, name: :price_filter, :class=>"ui button" %>
+    <%= form_tag wines_path, method: :get, class: 'ui form focus search-form' do %>
+        <%= collection_select :wine, :price, @prices, :to_s, :to_s, {prompt: "Filter by price"}, class: "ui selection dropdown" %><br><br>
+        <%= submit_tag 'Submit', name: :price_filter, :class=>"ui button" %>
     <% end %>
 
-    <br>
+    <br><br>
 
-    <%= form_tag wines_path, method: :get do %>
-        <%= label_tag "Search for wine:" %>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag :submit, name: nil, :class=>"ui button" %>
+    <%= form_tag wines_path, method: :get, class: 'ui form focus search-form' do %>
+        <%= text_field_tag :search, params[:search], :placeholder=>"Search for a wine..." %><br><br>
+        <%= submit_tag 'Submit', name: nil, :class=>"ui button" %>
     <% end %>
   
-
-    <h5>Number of wines: <%= @count %></h5>
-
+  </div>
   </div> <!-- closing index-sidebar -->
 
   <!-- Start Main Div -->
   <div class="index-all-items">
-    
-    
       <% @wines.each do |wine| %>
       
       <div class="recipe-card">
