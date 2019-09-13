@@ -1,13 +1,13 @@
 class RecipesController < ApplicationController
   def index
     if params[:filter] && params[:recipe][:dish_type] != "" && params[:recipe][:dish_type] != "All"
-      @recipes = Recipe.by_dish_type(params[:recipe][:dish_type])
+      @recipes = Recipe.by_dish_type(params[:recipe][:dish_type]).shuffle
       @dish_type = params[:recipe][:dish_type]
     elsif params[:search]
       wanted_ings = Ingredient.search_ingreds(params[:search])
-      @recipes = Recipe.by_search(params[:search], wanted_ings)
+      @recipes = Recipe.by_search(params[:search], wanted_ings).shuffle
     else
-      @recipes = Recipe.all
+      @recipes = Recipe.all.shuffle
       @dish_type = "All"
     end
     @dish_types = Recipe.dish_types
