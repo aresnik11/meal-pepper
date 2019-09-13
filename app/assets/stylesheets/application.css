@@ -141,10 +141,13 @@ body {
 }
 
 
-a, a:hover, .wine h1 {
+.ingredient-info a, a:hover, .wine h1, .title h1 {
   color: #ee3e1f;
 }
 
+a, .ingredient-info a:hover {
+	color: black;
+}
 
 /* 
 .ui .card {

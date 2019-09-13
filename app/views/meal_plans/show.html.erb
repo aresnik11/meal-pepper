@@ -1,46 +1,56 @@
 <div class="container">
   <div class="sidebar">
-  <h1><%= @meal_plan.name %></h1>
+  <div class="sidebar-fixed">
 
-  <ul>
-      <li><b>Recipes:</b>
-          <ul>
+    <h1><%= @meal_plan.name %></h1>
+    <br>
+
+    <div class="ui vertical menu">
+      <%=link_to 'Dashboard Home', user_path(current_user), :class=>"item"%>
+      <%=link_to 'Add Recipe', recipes_path, :class=>"item"%>
+      <%=link_to 'Add Wine', wines_path, :class=>"item"%>
+      <%=link_to 'Edit Meal Plan', edit_user_meal_plan_path(current_user, @meal_plan), :class=>"item"%>
+      <%=link_to 'Delete Meal Plan', user_meal_plan_path(current_user, @meal_plan), method: :delete, data: {confirm: "Are you sure you want to delete this meal plan?"}, :class=>"item"%>
+    </div>
+
+    </div>
+    </div>
+
+
+    <div class="index-all-items">
+
           <% @meal_plan.recipes.each do |recipe| %>
-              <li><%= link_to recipe.title, recipe_path(recipe) %>
-                  <% meal_plan_recipe = MealPlanRecipe.find_by(recipe_id: recipe.id, meal_plan_id: @meal_plan.id) %>
-                  <%= button_to "Remove recipe", meal_plan_recipe_path(meal_plan_recipe), method: :delete, data: {confirm: "Are you sure?"} %>
-              </li>
+            <div class="recipe-card">
+             <aside>
+                <%= link_to image_tag(recipe.image_url), recipe_path(recipe) %>
+             </aside> 
+                <article>
+                    <h2><%= link_to recipe.title, recipe_path(recipe) %></h2>
+                    <br>
+                    <% meal_plan_recipe = MealPlanRecipe.find_by(recipe_id: recipe.id, meal_plan_id: @meal_plan.id) %>
+                    <%= link_to meal_plan_recipe_path(meal_plan_recipe), method: :delete, data: {confirm: "Are you sure?"} do %>
+                        <button class="ui button">Remove Recipe</button>
+                    <% end %>
+                </article>
+ 
+              </div> <!-- close recipe-card -->
           <% end %>
-          </ul>
-          <br>
-
-          <li><b>Wines:</b>
-          <ul>
           <% @meal_plan.wines.each do |wine| %>
-              <li><%= link_to wine.title, wine_path(wine) %>
+            <div class="recipe-card">
+             <aside>
+                <%= link_to image_tag(wine.image_url), wine_path(wine) %>
+             </aside> 
+                <article>
+                    <h2><%= link_to wine.title, wine_path(wine) %></h2>
+                    <br>
                   <% meal_plan_wine = MealPlanWine.find_by(wine_id: wine.id, meal_plan_id: @meal_plan.id) %>
-                  <%= button_to "Remove wine", meal_plan_wine_path(meal_plan_wine), method: :delete, data: {confirm: "Are you sure?"} %>
-              </li>
+                    <%= link_to meal_plan_wine_path(meal_plan_wine), method: :delete, data: {confirm: "Are you sure?"} do %>
+                        <button class="ui button">Remove Wine</button>
+                    <% end %>
+                </article>
+ 
+              </div> <!-- close recipe-card -->
           <% end %>
-          </ul>
 
-      </li>
-  </ul>
-
-  <br>
-
-  <%= button_to "Find a recipe to add to add to this meal plan", recipes_path, method: :get %>
-
-  <br>
-
-  <%= button_to "Find a wine to add to add to this meal plan", wines_path, method: :get %>
-
-  <br>
-
-  <%= button_to "Edit this meal plan", edit_user_meal_plan_path(current_user), method: :get %>
-
-  <br>
-
-  <%= button_to "Delete Meal Plan", user_meal_plan_path(current_user, @meal_plan), method: :delete, data: {confirm: "Are you sure you want to delete this meal plan?"} %>
-  </div>
-</div>
+  </div> <!-- close index-all-items -->
+</div> <!-- close container -->

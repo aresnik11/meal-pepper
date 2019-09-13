@@ -42,8 +42,7 @@
 
 
         <article>
-          <h2><%= wine.title %></h2>
-          <!--<h2><%= link_to wine.title, wine_path(wine) %></h2>-->
+          <h2><%= link_to wine.title, wine_path(wine) %></h2>
           <h3><%= wine.varietal %></h3>
           <ul>
             <li><span class="icon-time icon-users"><%= image_tag('dollar-price-tag.png') %></span><span><%= wine.price %></span></li>

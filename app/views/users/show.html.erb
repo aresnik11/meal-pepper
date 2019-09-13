@@ -22,7 +22,7 @@
       <% @meal_plans.each do |meal| %>
       <div class="ui card">
         <div class="content">
-          <div class="header"> <%= meal.name %> </div>
+          <div class="header"><%= link_to "🌶 #{meal.name} 🌶", user_meal_plan_path(@user, meal) %></div>
           <!-- RECIPES -->
           <h4 class="ui sub header">Recipes</h4>
           <div class="ui small feed">
@@ -54,7 +54,7 @@
         </div> <!-- closes content -->
         <div class="extra content">
           <%= link_to user_meal_plan_path(@user, meal) do %>
-            <button class="ui button bottom-button">View Detail</button>
+            <button class="ui button">View Detail</button>
           <% end %>
         </div>
 

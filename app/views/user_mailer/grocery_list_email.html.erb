@@ -5,7 +5,7 @@
   </head>
   <body>
     <h1>Thanks for using Meal Pepper, <%= @user.first_name %></h1>
-    <h2>Grocery List:</h2>
+    <h2>🌶 Grocery List 🌶</h2>
     <% @grocery_list.each do |meal_plan, recipes| %>
         <% if !recipes.empty? %>
             <h3><%= meal_plan %></h3>

@@ -29,8 +29,7 @@
           <%= link_to image_tag(recipe.image_url), recipe_path(recipe) %>
         </aside>
         <article>
-          <h2><%= recipe.title %></h2>
-          <!--<h2><%= link_to recipe.title, recipe_path(recipe) %></h2>-->
+          <h2><%= link_to recipe.title, recipe_path(recipe) %></h2>
           <h3><%= recipe.dish_type %></h3>
           <ul>
             <li><span class="icon-time icon-users"><%= image_tag('001-user.png') %></span><span><%= recipe.servings %></span></li>
